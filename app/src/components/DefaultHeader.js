@@ -15,6 +15,7 @@ const DefaultHeader = ({ activeLanguage, canonical }) => (
         <body className="bg-light" />
         <meta name="description" content="Default description" />
         <link rel="canonical" href={`${SETTINGS.SITE_URL}${canonical}`} />
+        <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet" />
     </Helmet>
 );
 

@@ -15,7 +15,7 @@ module.exports = {
         },
     }],
     modify(baseConfig, secondArg, webpack) {
-        const {dev, target} = secondArg;
+        const { dev, target } = secondArg;
         /* make a copy of config */
         const config = Object.assign({}, baseConfig);
 
@@ -23,6 +23,7 @@ module.exports = {
             loader: require.resolve('sass-loader'),
             options: {
                 sourceMap: dev,
+                includePaths: [path.resolve(__dirname, 'src/styles')],
             },
         };
 
@@ -44,7 +45,7 @@ module.exports = {
                 use: [
                     ...rule.use,
                     scssLoader,
-                ]
+                ],
             });
         });
 

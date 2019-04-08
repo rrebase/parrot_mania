@@ -50,10 +50,12 @@ const NavigationBar = ({ user, isAuthenticated }) => {
 
     return (
         <Navbar color="faded" light expand="md">
-            <NavbarBrand tag={Link} to={urlResolve('landing')}>HOME</NavbarBrand>
+            <NavbarBrand tag={Link} to={urlResolve('landing')}>
+                <span role="img" aria-label="parrot">🦜</span>
+            </NavbarBrand>
             <Nav navbar>
                 <NavItem>
-                    <NavLink tag={Link} to={urlResolve('restricted')}>{gettext('Restricted view')}</NavLink>
+                    <NavLink tag={Link} to={urlResolve('parrots-list')}>{gettext('Parrots')}</NavLink>
                 </NavItem>
                 {devUrls}
             </Nav>

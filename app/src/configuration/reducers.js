@@ -6,6 +6,7 @@ import { connectRouter } from 'connected-react-router';
 import { combineReducers } from 'redux';
 
 import application, { APP_STATE_KEY } from 'ducks/application';
+import parrots, { PARROTS_STATE_KEY } from 'ducks/parrots';
 
 
 export default (history) => combineReducers({
@@ -15,4 +16,5 @@ export default (history) => combineReducers({
     loading: loadingReducer,
     user: userReducer,
     [APP_STATE_KEY]: application,
+    [PARROTS_STATE_KEY]: parrots,
 });

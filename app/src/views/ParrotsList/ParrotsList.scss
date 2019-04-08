@@ -1,0 +1,50 @@
+@import 'config/global-variables';
+
+a {
+    color: $gray-700;
+
+    &:hover {
+        outline: none;
+    }
+}
+
+input {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #6c757d;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.parrot-button {
+    border: 1px solid $gray-700;
+}
+
+.parrot-card {
+    background-color: $white;
+    padding: 1rem;
+    border: 1px solid black;
+    border-radius: $border-radius * 2;
+    margin-bottom: 1rem;
+    box-shadow: 4px 3px $gray-600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .parrot-card-left {
+        display: flex;
+        justify-content: left;
+        align-items: center;
+    }
+
+    .parrot-portrait {
+        width: 25px;
+        height: 25px;
+    }
+}
+
+.parrot-name {
+    font-size: 1.5rem;
+}

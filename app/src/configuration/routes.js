@@ -5,18 +5,21 @@ import { buildUrlCache, RenderChildren, resolvePath } from 'tg-named-routes';
 import App from 'containers/AppShell';
 import PageNotFound from 'views/PageNotFound';
 
-import permissionCheck from 'sagas/auth/permissionCheckSaga';
 import obtainTokenWatcher from 'sagas/auth/obtainTokenSaga';
 import logoutWorker from 'sagas/auth/logoutSaga';
+import createParrotWatcher from 'sagas/parrots/createParrot';
+import deleteParrotWatcher from 'sagas/parrots/deleteParrot';
+import fetchUserParrots from 'sagas/parrots/fetchUserParrots';
 import activateLanguage from 'sagas/user/activateLanguage';
 import fetchUserDetails from 'sagas/user/fetchUserDetails';
 import signupWatcher from 'sagas/auth/signupSaga';
 import forgotPasswordWatcher from 'sagas/auth/forgotPasswordSaga';
 import resetPasswordWatcher from 'sagas/auth/resetPasswordSaga';
 
+const CreateParrot = loadable(() => import('views/CreateParrot'));
+const ParrotsList = loadable(() => import('views/ParrotsList'));
 
 const Home = loadable(() => import('views/Home'));
-const RestrictedView = loadable(() => import('views/RestrictedView'));
 
 const LoginView = loadable(() => import('views/auth/Login'));
 const SignupView = loadable(() => import('views/auth/Signup'));
@@ -45,13 +48,6 @@ const routes = [
                 exact: true,
                 name: 'landing',
                 component: Home,
-            },
-            {
-                path: '/restricted',
-                exact: true,
-                name: 'restricted',
-                component: RestrictedView,
-                initial: permissionCheck,
             },
             {
                 path: '/auth',
@@ -94,6 +90,27 @@ const routes = [
                         initial: logoutWorker,
                     },
                     NotFoundRoute,
+                ],
+            },
+            {
+                path: '/parrots/create',
+                exact: true,
+                name: 'create-parrots',
+                component: CreateParrot,
+                watcher: [
+                    createParrotWatcher,
+                ],
+            },
+            {
+                path: '/parrots/',
+                exact: true,
+                name: 'parrots-list',
+                component: ParrotsList,
+                initial: [
+                    fetchUserParrots,
+                ],
+                watcher: [
+                    deleteParrotWatcher,
                 ],
             },
             NotFoundRoute,

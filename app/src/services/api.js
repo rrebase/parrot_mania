@@ -99,6 +99,10 @@ const api = createSagaRouter({
         forgotPassword: 'user/forgot_password',
         forgotPasswordToken: 'user/forgot_password/token',
     },
+    parrots: {
+        list: 'parrots/',
+        detail: 'parrots/${pk}',
+    },
 }, {
     apiRoot: SETTINGS.BACKEND_SITE_URL + SETTINGS.API_BASE,
 
